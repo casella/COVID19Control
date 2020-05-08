@@ -94,7 +94,7 @@ package COVID19Control
     equation
       der(Er) = -epsilon*Er + beta_delayed * Ir;
       der(Ir) = epsilon*Er - gamma * Ir;
-      der(Ir_tot) = gamma*Ir;
+      der(Ir_tot) = epsilon*Er;
       beta_delayed = delay(beta, tau_m);
       dIr_new = epsilon*Er;
     end GenericControlledOutbreak;
