@@ -140,7 +140,7 @@ package COVID19Control
       Real Ir(start = Ir_0, fixed = true) "Number of reported infectious subjects";
       Real Ir_tot(start = Ir_0, fixed = true) "Total number of reported infected subjects";
       Real Cr(start = 0, fixed = true) "Number of ill subjects under cure (cannot infect others)";
-      Real ICr "Number of infectious+cured subjects";
+      Real Ar "Number of active cases";
       Real Ir_data = data_Ir.y "Number of daily recorded new cases - data";
       Real beta = beta0 * data_beta_red.y "Actual values of beta";
       Real beta_delayed "Delayed value of beta to take into account of tau_m";
@@ -150,7 +150,7 @@ package COVID19Control
       der(Er) = (-epsilon * Er) + beta_delayed * Ir;
       der(Ir) = epsilon * Er - gamma * Ir;
       der(Cr) = gamma*Ir - delta*Cr;
-      ICr = Ir + Cr;
+      Ar = Ir + Cr;
       der(Ir_tot) = epsilon * Er;
       beta_delayed = delay(beta, tau_m);
       dIr_new = epsilon * Er;
