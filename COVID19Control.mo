@@ -67,13 +67,12 @@ package COVID19Control
     annotation(
       experiment(StartTime = 0, StopTime = 200, Tolerance = 1e-06, Interval = 0.1),
       Documentation(info = "<html><head></head><body>
-<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day  0: 24/02/2020 beginning of data set </span></pre>
-<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day  0: 24/02/2020 school closed and lockdowns in Northern Italy</span></pre>
-<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 10: 05/03/2020 schools closed and public events cancelled whole country</span></pre>
-<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 17: 12/03/2020 national lockdown</span></pre>
-<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 70: 04/04/2020 partial lifting of lockdown, social distancing retained</span></pre>
-<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 84: 18/04/2020 further lifting of lockdown, social distancing and inter-regional travel ban retained </span></pre>
-<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><br><!--EndFragment--></pre></body></html>"));
+<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day  0:  24/02/2020 beginning of data set </span></pre>
+<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day  0:  24/02/2020 school closed and lockdowns in Northern Italy</span></pre>
+<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 10:  05/03/2020 schools closed and public events cancelled whole country</span></pre>
+<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 17:  12/03/2020 national lockdown</span></pre>
+<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 70:  04/05/2020 partial lifting of lockdown, social distancing retained</span></pre>
+<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day 84:  18/05/2020 further lifting of lockdown, social distancing and inter-regional travel ban retained </span></pre><div><pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day 120: 23/09/2020 second lockdown?</span></pre></div><div><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\"><br></span></div></body></html>"));
   end Italy;
 
   package BaseModels
