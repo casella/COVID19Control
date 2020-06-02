@@ -7,7 +7,9 @@ package COVID19Control
     parameter Modelica.SIunits.PerUnit beta_red_1 = 0.16;
     parameter Modelica.SIunits.PerUnit beta_red_2 = 0.4;
     annotation(
-      experiment(StartTime = 0, StopTime = 24, Tolerance = 1e-06, Interval = 0.1));
+      experiment(StartTime = 0, StopTime = 24, Tolerance = 1e-06, Interval = 0.1),
+      __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst -d=stateselection --showStructuralAnnotations ",
+  __OpenModelica_simulationFlags(lv = "LOG_STATS", outputFormat = "mat", s = "dassl"));
   end China;
 
   model LazioBoth "Model of the Lazio outbreak with both public measures"
@@ -72,7 +74,9 @@ package COVID19Control
 <pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 10:  05/03/2020 schools closed and public events cancelled whole country</span></pre>
 <pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 17:  12/03/2020 national lockdown</span></pre>
 <pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\" font-family:'Courier New'; font-size:12pt; color:#009600;\">Day 70:  04/05/2020 partial lifting of lockdown, social distancing retained</span></pre>
-<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day 84:  18/05/2020 further lifting of lockdown, social distancing and inter-regional travel ban retained </span></pre><div><pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day 120: 23/09/2020 second lockdown?</span></pre></div><div><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\"><br></span></div></body></html>"));
+<pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day 84:  18/05/2020 further lifting of lockdown, social distancing and inter-regional travel ban retained </span></pre><div><pre style=\"margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day 120: 23/09/2020 second lockdown?</span></pre></div><div><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\"><br></span></div></body></html>"),
+  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst -d=stateselection --showStructuralAnnotations ",
+  __OpenModelica_simulationFlags(lv = "LOG_STATS", outputFormat = "mat", s = "dassl"));
   end Italy;
 
   package BaseModels
