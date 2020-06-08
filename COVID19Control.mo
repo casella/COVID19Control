@@ -1,7 +1,7 @@
 package COVID19Control
   extends Modelica.Icons.Package;
   
-  model China "Model of China outbreak with Hubei lockdown"
+  model China "Model of China outbreak"
     extends Modelica.Icons.Example;
     extends BaseModels.GenericControlledOutbreak(
       data_Nr(table =
@@ -26,7 +26,7 @@ package COVID19Control
   __OpenModelica_simulationFlags(lv = "LOG_STATS", outputFormat = "mat", s = "dassl"));
   end China;
 
-  model Italy "Model of Italian outbreak"
+  model Italy "Model of Italy outbreak"
     extends Modelica.Icons.Example;
     extends BaseModels.GenericControlledOutbreak(
       data_Nr(table = 
@@ -81,7 +81,7 @@ package COVID19Control
   __OpenModelica_simulationFlags(lv = "LOG_STATS", outputFormat = "mat", s = "dassl"));
   end Italy;
 
-  model France
+  model France "Model of France Outbreak"
     extends Modelica.Icons.Example;
     extends BaseModels.GenericControlledOutbreak(
       data_Nr(table = 
