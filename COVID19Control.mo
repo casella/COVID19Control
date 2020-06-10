@@ -186,11 +186,12 @@ end UK;
       parameter Real epsilon "Inverse of average incubation time";
       parameter Real delta "Inverse of average recovery time for isolated infectious subjects";
       parameter Real tau_m "Total measurement delay";
+      parameter Real tau_c = 4 "Decision and implementation delay";
       parameter Real Ir_0 "Initial value of reported infectious subjects";
       parameter Real t1 "Time of first reduction of beta";
       parameter Real t2 "Time of second reduction of beta";
-      parameter Modelica.SIunits.PerUnit rho1 = 0.63 "Reduction factor of beta after t_1";
-      parameter Modelica.SIunits.PerUnit rho2 = 0.16 "Reduction factor of beta after t_2";
+      parameter Modelica.SIunits.PerUnit rho1 "Reduction factor of beta after t1";
+      parameter Modelica.SIunits.PerUnit rho2 = rho1  "Reduction factor of beta after t2";
     
       // Computed parameters
       
@@ -224,6 +225,12 @@ end UK;
       final parameter Real Te2 = -1 / p2 "Stable pole time constant when beta = beta2";
       final parameter Modelica.SIunits.PerUnit R2 = beta0*rho2/gamma "Current reproduction number at t = t2";
     
+      // Check of limit value of reproduction number for feedback controllability
+      final parameter Real rl = ((-(epsilon + gamma)) + sqrt((epsilon + gamma) ^ 2 + 4 * epsilon * (beta0*Rl/R0 - gamma))) / 2 "Unstable eigenvalue at feedback controllability limit";
+      final parameter Real Tdl = log(2) / rl "Doubling time when beta = beta2";
+      final parameter Modelica.SIunits.PerUnit tau_Tdl = (tau_m + tau_c) / Tdl "Ratio of delay to limit doubling time for feedback controllability";
+      final parameter Modelica.SIunits.PerUnit Rl(fixed = false, start = 1.1) "Limit value of R_t for feedback controllability";
+    
       // Model variables
       Real Er(start = Er_0, fixed = true) "Number of estimated exposed subjects that will be reported";
       Real Ir(start = Ir_0, fixed = true) "Number of reported infectious subjects";
@@ -244,6 +251,9 @@ end UK;
       der(Tr) = epsilon* Er;  
       Ar = Ir + Lr;
       Nr = epsilon*Er;
+    initial equation
+      // Stability limit to compute Rl
+      tau_Tdl = 0.225; 
     end GenericControlledOutbreak;
   end BaseModels;
   annotation(
