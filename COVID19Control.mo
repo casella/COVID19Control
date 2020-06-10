@@ -8,22 +8,21 @@ package COVID19Control
        [ 0,   16;  1,   16;  2,   16;  3,  100;  4, 282;   5,  350;  6, 650;   7,  950;  8,  900;  9, 1090;
         10, 1460; 11, 1635; 12, 1900; 13, 2125; 14, 2630; 15, 2780; 16, 3230; 17, 3790; 18, 3660; 19, 3150;
         20, 3375; 21, 2635; 22, 3200; 23, 2900; 24, 2135]), 
-      data_beta_red(table = 
-       [0, 1;           0, beta_red_1; 
-        5, beta_red_1;  6, beta_red_2;
-        24, beta_red_2; 100, beta_red_2]), 
       R0 = 4, 
       beta0 = 1.6, 
       epsilon = 0.20, 
       delta = 0.03,
-      tau_m = 11.5, 
-      Ir_0 = 420);
-    parameter Modelica.SIunits.PerUnit beta_red_1 = 0.63;
-    parameter Modelica.SIunits.PerUnit beta_red_2 = 0.16;
+      tau_m = 12, 
+      Ir_0 = 420,
+      t1 = 0,
+      t2 = 5,
+      rho1 = 0.63,
+      rho2 = 0.16);
     annotation(
       experiment(StartTime = 0, StopTime = 24, Tolerance = 1e-06, Interval = 0.1),
       __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst -d=stateselection --showStructuralAnnotations ",
-  __OpenModelica_simulationFlags(lv = "LOG_STATS", outputFormat = "mat", s = "dassl"));
+  __OpenModelica_simulationFlags(lv = "LOG_STATS", outputFormat = "mat", s = "dassl"),
+  Documentation(info = "<html><head></head><body><pre style=\"font-size: 12px; margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day  0:  18/01/2020 beginning of data set </span></pre><pre style=\"font-size: 12px; margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day  5:  23/01/2020 Wuhan city lockdown</span></pre><pre style=\"font-size: 12px; margin-top: 0px; margin-bottom: 0px;\"><span style=\"font-family: 'Courier New'; font-size: 12pt; color: rgb(0, 150, 0);\">Day  6:  24/01/2020 Hubei region lockdown</span></pre><pre style=\"font-size: 12px; margin-top: 0px; margin-bottom: 0px;\"><br></pre></body></html>"));
   end China;
 
   model Italy "Model of Italy outbreak"
@@ -56,19 +55,14 @@ package COVID19Control
          50,156363; 51,159516; 52,162488; 53,165155; 54,168941; 55,172434; 56,175925; 57,178972; 58,181228; 59,183957;
          60,187327; 61,189973; 62,192994; 63,195351; 64,197675; 65,199414; 66,201505; 67,203591; 68,205463; 69,207428;
          70,209328]),
-      data_beta_red(table = 
-        [0, 1;            0, 1; 
-         2, 1;            2, beta_red_1;
-         19, beta_red_1; 19, beta_red_2; 
-         70, beta_red_2]),
       R0 = 4,
       beta0 = 1.3,
       epsilon = 0.23,
       delta = 0.030,
-      tau_m = 8.5,
-      Ir_0 = 67);
-    parameter Modelica.SIunits.PerUnit beta_red_1 = 0.58;
-    parameter Modelica.SIunits.PerUnit beta_red_2 = 0.205;
+      tau_m = 9,
+      Ir_0 = 67,
+      t1 = 2, rho1 = 0.56, 
+      t2 = 19, rho2 = 0.205);
     
     annotation(
       experiment(StartTime = 0, StopTime = 70, Tolerance = 1e-06, Interval = 0.1),
@@ -108,19 +102,14 @@ package COVID19Control
          40, 82048; 41, 86334; 42, 90676; 43, 93790; 44, 95403; 45, 98076; 46,103573; 47,106206; 48,108847; 49,109252;
          50,111821; 51,112606; 52,114657; 53,117324; 54,119151; 55,120204; 56,122577; 57,124114; 58,124575; 59,128339;
          60,129859; 61,128442; 62,129581; 63,130185; 64,130979; 65,131287]),
-      data_beta_red(table = 
-        [0, 1;            0, 1; 
-         2, 1;            2, beta_red_1;
-         17, beta_red_1; 17, beta_red_2; 
-         65, beta_red_2]),
       R0 = 3.8,
       beta0 = 1.3,
       epsilon = 0.20,
-      delta = 0.030,
+      delta = 0.0345,
       tau_m = 12,
-      Ir_0 = 45);
-    parameter Modelica.SIunits.PerUnit beta_red_1 = 0.6;
-    parameter Modelica.SIunits.PerUnit beta_red_2 = 0.195;
+      Ir_0 = 45,
+      t1 = 2,  rho1 = 0.6,
+      t2 = 17, rho2 = 0.195);
     
     annotation(
       experiment(StartTime = 0, StopTime = 65, Tolerance = 1e-06, Interval = 0.1),
@@ -154,19 +143,14 @@ model UK "Model of UK outbreak"
        50,124743; 51,129044; 52,133495; 53,138078; 54,143464; 55,148377; 56,152840; 57,157149; 58,161145; 59,165221;
        60,171253; 61,177454; 62,182260; 63,186599; 64,190584; 65,194990; 66,201101; 67,206715; 68,211364; 69,215260;
        70,219183; 71,223060]),
-    data_beta_red(table = 
-      [0, 1;            0, 1; 
-       15,1;           15, beta_red_1;
-       15, beta_red_1; 25, beta_red_2; 
-       70, beta_red_2]),
     R0 = 3.6,
     beta0 = 1.28,
     epsilon = 0.16,
     delta = 0.030,
-    tau_m = 11.5,
-    Ir_0 = 20);
-  parameter Modelica.SIunits.PerUnit beta_red_1 = 0.74;
-  parameter Modelica.SIunits.PerUnit beta_red_2 = 0.28;
+    tau_m = 10,
+    Ir_0 = 20,
+    t1 = 15, rho1 = 0.65,
+    t2 = 25, rho2 = 0.27);
   
   annotation(
     experiment(StartTime = 0, StopTime = 71, Tolerance = 1e-06, Interval = 0.1),
@@ -185,13 +169,17 @@ end UK;
     
     partial model GenericControlledOutbreak "Generic model for the outbreak, eq (13)-(15) of the paper, including cured compartment"
       // Experimental data sources
-    Modelica.Blocks.Sources.TimeTable data_Tr(table = [0, 0; 100, 0]) annotation(
+      Modelica.Blocks.Sources.TimeTable data_Tr(table = [0, 0; 100, 0]) annotation(
         Placement(visible = true, transformation(origin = {4, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Sources.TimeTable data_Ar(table = [0, 0; 1000, 0]) "Experimental data for A_r(t)" annotation(
         Placement(visible = true, transformation(origin = {-64, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       Modelica.Blocks.Sources.TimeTable data_Nr(table = [0, 0; 100, 0]) "Experimental data daily new reported cases" annotation(
         Placement(visible = true, transformation(origin = {-32, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      Modelica.Blocks.Sources.TimeTable data_beta_red(table = [0, 1; 100, 1]) "Estimated reduction factor of \beta in p.u.";
+      Modelica.Blocks.Sources.TimeTable data_rho(
+        table = [0,  1;     t1, 1;
+                 t1, rho1;  t2, rho1;
+                 t2, rho2; 100, rho2]) "Estimated reduction factor of \beta in p.u.";
+    
       // Free parameters of the model
       parameter Real R0 "Basic reproduction number";
       parameter Real beta0 "Beta coefficient with no social restrictions";
@@ -199,16 +187,42 @@ end UK;
       parameter Real delta "Inverse of average recovery time for isolated infectious subjects";
       parameter Real tau_m "Total measurement delay";
       parameter Real Ir_0 "Initial value of reported infectious subjects";
+      parameter Real t1 "Time of first reduction of beta";
+      parameter Real t2 "Time of second reduction of beta";
+      parameter Modelica.SIunits.PerUnit rho1 = 0.63 "Reduction factor of beta after t_1";
+      parameter Modelica.SIunits.PerUnit rho2 = 0.16 "Reduction factor of beta after t_2";
     
       // Computed parameters
+      
       final parameter Real Er_0 = beta0 * Ir_0 / (r0 + epsilon) "Initial value of reported exposed subjects";
-      final parameter Real Lr_0 = gamma*Ir_0/(r0 + delta) "Initial value of isolated infectious reported subjects";
+      final parameter Real Lr_0 = Ir_0 "Initial value of isolated infectious reported subjects";
       final parameter Real gamma = beta0 / R0 "Inverse of average time to non-infectiousness";
+      final parameter Real epsilon_inv = 1/epsilon "Average latency time";
+      final parameter Real gamma_inv = 1/gamma "Average infectiousness time";
+      final parameter Real delta_inv = 1/delta "Average recovery time once no longer infectious";
+    
+      // Dynamic parameters at t = 0
       final parameter Real r0 = ((-(epsilon + gamma)) + sqrt((epsilon + gamma) ^ 2 + 4 * epsilon * (beta0 - gamma))) / 2 "Unstable eigenvalue when beta = beta0";
       final parameter Real p0 = ((-(epsilon + gamma)) - sqrt((epsilon + gamma) ^ 2 + 4 * epsilon * (beta0 - gamma))) / 2 "Stable eigenvalue when beta = beta0";
       final parameter Real Td0 = log(2) / r0 "Doubling time when beta = beta0";
       final parameter Real T0 = 1 / r0 "Unstable pole time constant when beta = beta0";
       final parameter Real Te0 = -1 / p0 "Stable pole time constant when beta = beta0";
+    
+      // Dynamic parameters at t = t1
+      final parameter Real r1 = ((-(epsilon + gamma)) + sqrt((epsilon + gamma) ^ 2 + 4 * epsilon * (beta0*rho1 - gamma))) / 2 "Unstable eigenvalue when beta = beta1";
+      final parameter Real p1 = ((-(epsilon + gamma)) - sqrt((epsilon + gamma) ^ 2 + 4 * epsilon * (beta0*rho1 - gamma))) / 2 "Stable eigenvalue when beta = beta1";
+      final parameter Real Td1 = log(2) / r1 "Doubling time when beta = beta1";
+      final parameter Real T1 = 1 / r1 "Unstable pole time constant when beta = beta1";
+      final parameter Real Te1 = -1 / p1 "Stable pole time constant when beta = beta1";
+      final parameter Modelica.SIunits.PerUnit R1 = beta0*rho1/gamma "Current reproduction number at t = t1";
+    
+      // Dynamic parameters at t = t2
+      final parameter Real r2 = ((-(epsilon + gamma)) + sqrt((epsilon + gamma) ^ 2 + 4 * epsilon * (beta0*rho2 - gamma))) / 2 "Unstable eigenvalue when beta = beta2";
+      final parameter Real p2 = ((-(epsilon + gamma)) - sqrt((epsilon + gamma) ^ 2 + 4 * epsilon * (beta0*rho2 - gamma))) / 2 "Stable eigenvalue when beta = beta2";
+      final parameter Real Td2 = log(2) / r2 "Doubling time when beta = beta2";
+      final parameter Real T2 = 1 / r2 "Unstable pole time constant when beta = beta2";
+      final parameter Real Te2 = -1 / p2 "Stable pole time constant when beta = beta2";
+      final parameter Modelica.SIunits.PerUnit R2 = beta0*rho2/gamma "Current reproduction number at t = t2";
     
       // Model variables
       Real Er(start = Er_0, fixed = true) "Number of estimated exposed subjects that will be reported";
@@ -217,7 +231,7 @@ end UK;
       Real Tr(start = Ir_0, fixed = true) "Total number of reported cases";
       Real Ar "Number of active reported cases";
       Real Nr "Number of new daily reported cases";
-      Real beta = beta0 * data_beta_red.y "Actual values of beta";
+      Real beta = beta0 * data_rho.y "Actual values of beta";
       Real beta_delayed "Delayed value of beta to take into account of tau_m";
       Real Tr_data = data_Tr.y "Total number of recorded cases - data";
       Real Ar_data = data_Ar.y "Number of daily recorded new cases - data";
